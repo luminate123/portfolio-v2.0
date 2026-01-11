@@ -1,0 +1,233 @@
+---
+
+---
+
+<section class="section hero">
+    <div class="container relative-z">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <span class="badge animate-on-scroll"
+                    >Disponible para trabajar</span
+                >
+                <h1 class="animate-on-scroll delay-100">
+                    Hola, soy Sebastian <br />
+                    <span class="text-gradient">Desarrollador Web</span>
+                </h1>
+                <p class="animate-on-scroll delay-200">
+                    Soy un desarrollador apasionado por construir software de
+                    alta calidad. Me especializo en crear aplicaciones web
+                    modernas, rápidas y accesibles.
+                </p>
+                <div class="cta-group animate-on-scroll delay-300">
+                    <a href="#projects" class="btn btn-primary">Ver Proyectos</a
+                    >
+                    <a href="#contact" class="btn btn-secondary">Contáctame</a>
+                </div>
+            </div>
+            <div class="hero-image animate-on-scroll delay-200">
+                <div class="image-container">
+                    <!-- Puedes reemplazar este SVG con tu foto real (png transparente) -->
+                    <svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        overflow: hidden;
+        /* Background moved to global layout */
+    }
+
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-image {
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    .image-container {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-icon {
+        width: 100%;
+        height: 100%;
+        color: rgba(255, 255, 255, 0.3);
+        transition: all 0.5s ease;
+    }
+
+    .profile-icon:hover {
+        color: var(--color-primary);
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+    }
+
+    @keyframes blob-bounce {
+        0% {
+            transform: translate(0, 0) scale(1);
+        }
+        100% {
+            transform: translate(20px, -20px) scale(1.1);
+        }
+    }
+
+    @keyframes morph {
+        0% {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        50% {
+            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        }
+        100% {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 0.4rem 0;
+        background: transparent;
+        color: var(--color-primary);
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        border: none;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    h1 {
+        font-size: 4.5rem;
+        margin-bottom: 2rem;
+        letter-spacing: -0.03em;
+        font-weight: 300;
+        line-height: 1.1;
+    }
+
+    .text-gradient {
+        background: linear-gradient(
+            to right,
+            var(--color-primary),
+            var(--color-accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+    }
+
+    .cta-group {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn {
+        padding: 0.8rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background: var(--color-primary);
+        color: black;
+    }
+
+    .btn-primary:hover {
+        background: var(--color-primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: var(--color-text);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--color-text);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 968px) {
+        .hero-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-image {
+            order: 2;
+        }
+
+        .image-container {
+            width: 280px;
+            height: 280px;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+        }
+
+        .cta-group {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .image-container {
+            width: 240px;
+            height: 240px;
+        }
+    }
+</style>

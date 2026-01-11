@@ -1,0 +1,166 @@
+---
+---
+<header class="header">
+    <div class="container header-content">
+        <a href="#" class="logo">
+            <span class="typing-text"></span><span class="cursor">&nbsp;</span>
+        </a>
+        <nav class="nav">
+            <a href="#about">Sobre mí</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#contact" class="btn-contact">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<script>
+    const text = "Sebastian.dev";
+    const typingElement = document.querySelector('.typing-text');
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+        if (!typingElement) return;
+
+        const currentString = text.substring(0, charIndex);
+        
+        if (currentString.includes('.')) {
+            typingElement.innerHTML = currentString.replace('.', '<span class="dot">.</span>');
+        } else {
+            typingElement.textContent = currentString;
+        }
+
+        let typeSpeed = 150;
+
+        if (!isDeleting && charIndex < text.length) {
+            charIndex++;
+            typeSpeed = 150;
+        } else if (isDeleting && charIndex > 0) {
+            charIndex--;
+            typeSpeed = 100;
+        } else {
+            isDeleting = !isDeleting;
+            typeSpeed = isDeleting ? 2000 : 500;
+        }
+
+        setTimeout(typeEffect, typeSpeed);
+    }
+
+    document.addEventListener('DOMContentLoaded', typeEffect);
+</script>
+
+<style>
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 0;
+        background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.9),
+            rgba(26, 26, 26, 0.9),
+            rgba(0, 0, 0, 0.9)
+        );
+        background-size: 200% 100%;
+        animation: gradientMove 15s ease infinite;
+        backdrop-filter: blur(10px);
+        z-index: 100;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-text);
+        display: flex;
+        align-items: center;
+        min-width: 200px;
+    }
+
+    :global(.dot) {
+        color: var(--color-primary);
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 3px;
+        height: 1.5rem;
+        background-color: var(--color-primary);
+        margin-left: 4px;
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    .nav {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .nav a {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #a3a3a3;
+    }
+
+    .nav a:hover {
+        color: var(--color-primary);
+    }
+
+    .btn-contact {
+        padding: 0.5rem 1.2rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--color-primary) !important;
+        border-radius: 2rem;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-contact:hover {
+        background: var(--color-primary);
+        color: black !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav {
+            gap: 1rem;
+        }
+
+        .nav a {
+            font-size: 0.85rem;
+        }
+
+        .btn-contact {
+            padding: 0.4rem 0.8rem;
+        }
+        
+        .logo {
+            font-size: 1.2rem;
+            min-width: auto;
+        }
+    }
+</style>

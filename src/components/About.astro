@@ -1,0 +1,263 @@
+---
+const technologies = [
+    { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+    { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg', invert: true },
+    { name: 'Astro', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg', invert: true },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+    { name: 'Tailwind', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
+    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg', invert: true },
+    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg' },
+    { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
+];
+---
+<section id="about" class="section">
+    <div class="container">
+        <div class="about-wrapper">
+            <div class="content">
+                <h2 class="section-title animate-on-scroll">Sobre mí</h2>
+                <p class="animate-on-scroll delay-100">
+                    Hola, soy Sebastian, un desarrollador web con pasión por crear experiencias digitales intuitivas y dinámicas. 
+                    Con una sólida base en tecnologías frontend y backend, me dedico a transformar ideas complejas en soluciones elegantes.
+                </p>
+                <p class="animate-on-scroll delay-200">
+                    Mi enfoque se centra en el rendimiento, la accesibilidad y la escritura de código limpio y mantenible. 
+                    Siempre estoy buscando aprender nuevas tecnologías y mejorar mis habilidades.
+                </p>
+                
+                <div class="stats animate-on-scroll delay-300">
+                    <div class="stat-item">
+                        <span class="number">3+</span>
+                        <span class="label">Años de experiencia</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">20+</span>
+                        <span class="label">Proyectos completados</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">100%</span>
+                        <span class="label">Clientes satisfechos</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-section animate-on-scroll delay-200">
+                <h3>Habilidades Técnicas</h3>
+                
+                <div class="slider-wrapper">
+                    <div class="slider">
+                        <div class="slide-track">
+                            {technologies.map((tech) => (
+                                <div class="slide">
+                                    <div class="icon-box">
+                                        <img 
+                                            src={tech.icon} 
+                                            alt={tech.name} 
+                                            width="50" 
+                                            height="50"
+                                            class={tech.invert ? 'invert-filter' : ''}
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <span class="tech-name">{tech.name}</span>
+                                </div>
+                            ))}
+                            {technologies.map((tech) => (
+                                <div class="slide">
+                                    <div class="icon-box">
+                                        <img 
+                                            src={tech.icon} 
+                                            alt={tech.name} 
+                                            width="50" 
+                                            height="50"
+                                            class={tech.invert ? 'invert-filter' : ''}
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <span class="tech-name">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 0;
+    }
+
+    .section-title {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: var(--color-text);
+        text-align: center;
+    }
+
+    .about-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .content {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        color: #d4d4d4;
+    }
+
+    .stats {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--color-primary);
+    }
+
+    .label {
+        font-size: 0.875rem;
+        color: #a3a3a3;
+    }
+
+    /* Skills Slider Styles */
+    .skills-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .skills-container h3 {
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+        color: var(--color-text);
+        text-align: center;
+    }
+
+    .slider-wrapper {
+        position: relative;
+        width: 100%;
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .slider {
+        display: flex;
+        overflow: hidden;
+    }
+
+    .slide-track {
+        display: flex;
+        width: max-content;
+        animation: scroll 40s linear infinite;
+    }
+
+    .slide-track:hover {
+        animation-play-state: paused;
+    }
+
+    .slide {
+        width: 120px;
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .slide:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px -10px rgba(0,0,0,0.5);
+    }
+
+    .icon-box {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+    }
+
+    .slide:hover img {
+        opacity: 1;
+    }
+
+    .invert-filter {
+        filter: invert(1) brightness(200%);
+    }
+
+    .tech-name {
+        font-size: 0.875rem;
+        color: #a3a3a3;
+        font-weight: 500;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 768px) {
+        .about-wrapper {
+            gap: 3rem;
+        }
+
+        .stats {
+            gap: 2rem;
+        }
+
+        .number {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+        }
+    }
+</style>
