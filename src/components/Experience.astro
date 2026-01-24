@@ -1,4 +1,4 @@
----
+﻿---
 const experience = [
     {
         date: "Febrero 2025 - Actualidad",
@@ -114,8 +114,8 @@ function calculateDuration(dateStr: string): string {
         background: linear-gradient(
             to bottom,
             transparent,
-            rgba(102, 126, 234, 0.3) 10%,
-            rgba(102, 126, 234, 0.3) 90%,
+            rgba(59, 130, 246, 0.3) 10%,
+            rgba(59, 130, 246, 0.3) 90%,
             transparent
         );
     }
@@ -132,7 +132,7 @@ function calculateDuration(dateStr: string): string {
             var(--color-accent)
         );
         animation: timelineGrow 2s ease-out forwards;
-        box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
     }
 
     @keyframes timelineGrow {
@@ -201,16 +201,16 @@ function calculateDuration(dateStr: string): string {
         height: 8px;
         background: var(--color-primary);
         border-radius: 50%;
-        box-shadow: 0 0 10px rgba(102, 126, 234, 0.8);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
         animation: glowDot 2s ease-in-out infinite;
     }
 
     @keyframes glowDot {
         0%, 100% {
-            box-shadow: 0 0 10px rgba(102, 126, 234, 0.8);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
         }
         50% {
-            box-shadow: 0 0 20px rgba(102, 126, 234, 1);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 1);
         }
     }
 
@@ -233,11 +233,11 @@ function calculateDuration(dateStr: string): string {
 
     .timeline-item:hover .timeline-card {
         background: rgba(26, 26, 26, 0.6);
-        border-color: rgba(102, 126, 234, 0.5);
+        border-color: rgba(59, 130, 246, 0.5);
         transform: translateX(8px);
         box-shadow: 
             0 10px 30px rgba(0, 0, 0, 0.4),
-            0 0 20px rgba(102, 126, 234, 0.2);
+            0 0 20px rgba(59, 130, 246, 0.2);
     }
 
     /* Card Header */
@@ -261,7 +261,7 @@ function calculateDuration(dateStr: string): string {
     }
 
     .timeline-item:hover .company-logo {
-        background: rgba(102, 126, 234, 0.1);
+        background: rgba(59, 130, 246, 0.1);
         transform: rotate(-5deg) scale(1.1);
     }
 
@@ -276,8 +276,8 @@ function calculateDuration(dateStr: string): string {
         align-items: center;
         gap: 0.4rem;
         padding: 0.4rem 0.8rem;
-        background: rgba(102, 126, 234, 0.1);
-        border: 1px solid rgba(102, 126, 234, 0.3);
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.3);
         border-radius: 2rem;
         color: var(--color-tech);
         font-size: var(--text-xs);
@@ -366,7 +366,7 @@ function calculateDuration(dateStr: string): string {
     }
 
     .expand-btn:hover {
-        background: rgba(102, 126, 234, 0.2);
+        background: rgba(59, 130, 246, 0.2);
         border-color: var(--color-primary);
         color: var(--color-primary);
         transform: translateY(2px);
