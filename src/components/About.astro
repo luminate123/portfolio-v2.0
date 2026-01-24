@@ -26,7 +26,7 @@ const technologies = [
         <div class="about-wrapper">
             <div class="profile-section animate-on-scroll">
                 <div class="profile-image-wrapper">
-                    <img src="public/profile.jpg" alt="Sebastian Senmache - Ingeniero Informático" class="profile-image" />
+                    <img src="profile.jpg" alt="Sebastian Senmache - Ingeniero Informático" class="profile-image" />
                     <div class="image-overlay"></div>
                 </div>
             </div>
@@ -191,6 +191,14 @@ const technologies = [
         max-width: 1100px;
         margin: 0 auto;
         align-items: start;
+        width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+        .about-wrapper {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
     }
 
     /* Profile Section */
@@ -528,6 +536,12 @@ const technologies = [
     }
 
     @media (max-width: 968px) {
+        .section {
+            min-height: auto;
+            align-items: flex-start;
+            padding: 4rem 0;
+        }
+
         .about-wrapper {
             grid-template-columns: 1fr;
             gap: 3rem;
@@ -574,9 +588,22 @@ const technologies = [
             flex-wrap: wrap;
             justify-content: center;
         }
+
+        .skills-section {
+            margin-top: 1rem;
+        }
     }
 
     @media (max-width: 480px) {
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
         .stats {
             flex-direction: column;
             gap: 2rem;
@@ -621,6 +648,10 @@ const technologies = [
         .availability-badge {
             font-size: 0.7rem;
             padding: 0.4rem 0.8rem;
+        }
+
+        .profile-image-wrapper {
+            max-width: 220px;
         }
     }
 </style>
