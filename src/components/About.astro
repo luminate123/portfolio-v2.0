@@ -169,10 +169,8 @@ const technologies = [
 
 <style>
     .section {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        min-height: auto;
+        display: block;
         padding: 6rem 0;
     }
 
@@ -185,19 +183,23 @@ const technologies = [
     }
 
     .about-wrapper {
-        display: grid;
-        grid-template-columns: 350px 1fr;
-        gap: 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
         max-width: 1100px;
         margin: 0 auto;
-        align-items: start;
         width: 100%;
     }
 
-    @media (max-width: 1024px) {
+    @media (min-width: 768px) {
         .about-wrapper {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+        }
+        
+        .profile-section {
+            align-items: flex-start;
         }
     }
 
@@ -206,8 +208,7 @@ const technologies = [
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-        position: sticky;
-        top: 120px;
+        align-items: center;
     }
 
     .profile-image-wrapper {
@@ -535,26 +536,15 @@ const technologies = [
         100% { transform: translateX(-50%); }
     }
 
-    @media (max-width: 968px) {
+    /* Mobile styles - default mobile first approach already applied above */
+    @media (max-width: 767px) {
         .section {
-            min-height: auto;
-            align-items: flex-start;
             padding: 4rem 0;
         }
 
-        .about-wrapper {
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-
-        .profile-section {
-            position: relative;
-            top: 0;
-            align-items: center;
-        }
-
         .profile-image-wrapper {
-            max-width: 280px;
+            max-width: 250px;
+            margin: 0 auto;
         }
 
         .content {
@@ -564,7 +554,7 @@ const technologies = [
         .stats {
             justify-content: center;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .stat-item {
@@ -576,21 +566,27 @@ const technologies = [
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
         }
 
         .action-buttons {
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 1.5rem;
         }
 
-        .social-links {
-            flex-wrap: wrap;
+        .btn-download {
+            width: 100%;
+            max-width: 280px;
             justify-content: center;
         }
 
-        .skills-section {
-            margin-top: 1rem;
+        .social-links {
+            justify-content: center;
+        }
+
+        .skills-section h3 {
+            font-size: 1.5rem;
         }
     }
 
@@ -600,13 +596,17 @@ const technologies = [
         }
 
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-image-wrapper {
+            max-width: 200px;
         }
 
         .stats {
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .stat-item {
@@ -622,36 +622,17 @@ const technologies = [
         }
 
         .slide {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
         }
 
         .icon-box {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
         }
 
-        .btn-download {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .action-buttons {
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .social-links {
-            justify-content: center;
-        }
-
-        .availability-badge {
+        .tech-name {
             font-size: 0.7rem;
-            padding: 0.4rem 0.8rem;
-        }
-
-        .profile-image-wrapper {
-            max-width: 220px;
         }
     }
 </style>
