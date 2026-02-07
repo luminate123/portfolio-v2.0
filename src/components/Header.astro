@@ -1,21 +1,21 @@
 ﻿---
 ---
-<header class="header">
-    <div class="container header-content">
-        <a href="#" class="logo">
-            <span class="typing-text"></span><span class="cursor">&nbsp;</span>
+<header class="fixed top-0 left-0 w-full z-50 transition-all duration-400" id="main-header">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between h-16">
+        <a href="#" class="text-xl font-bold text-white flex items-center">
+            <span class="typing-text"></span><span class="cursor-blink">&nbsp;</span>
         </a>
-        
-        <button class="mobile-menu-btn" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+
+        <button class="mobile-menu-btn md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 bg-white/5 border border-white/10 rounded-lg p-2 cursor-pointer" aria-label="Menu">
+            <span class="w-full h-[2px] bg-white rounded transition-all duration-300 origin-center"></span>
+            <span class="w-full h-[2px] bg-white rounded transition-all duration-300 origin-center"></span>
+            <span class="w-full h-[2px] bg-white rounded transition-all duration-300 origin-center"></span>
         </button>
 
-        <nav class="nav">
-            <a href="#about">Sobre mí</a>
-            <a href="#projects">Proyectos</a>
-            <a href="#contact" class="btn-contact">Contacto</a>
+        <nav class="nav-links hidden md:flex gap-8 items-center">
+            <a href="#about" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors relative py-1 nav-link">Sobre mí</a>
+            <a href="#projects" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors relative py-1 nav-link">Proyectos</a>
+            <a href="#contact" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg text-sm font-semibold hover:-translate-y-0.5 transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50">Contacto</a>
         </nav>
     </div>
 </header>
@@ -23,43 +23,35 @@
 <script>
     const text = "Sebastian.dev";
     const typingElement = document.querySelector('.typing-text');
-    const header = document.querySelector('.header');
-    const navLinks = document.querySelectorAll('.nav a');
+    const header = document.getElementById('main-header');
     let charIndex = 0;
     let isDeleting = false;
     let lastScrollY = window.scrollY;
 
-    // Mobile menu logic
     const menuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('.nav');
+    const nav = document.querySelector('.nav-links');
 
     menuBtn?.addEventListener('click', () => {
         menuBtn.classList.toggle('active');
-        nav?.classList.toggle('active');
+        nav?.classList.toggle('mobile-open');
     });
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav a').forEach(link => {
+    document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             menuBtn?.classList.remove('active');
-            nav?.classList.remove('active');
+            nav?.classList.remove('mobile-open');
         });
     });
 
-    // Typing effect
     function typeEffect() {
         if (!typingElement) return;
-
         const currentString = text.substring(0, charIndex);
-        
         if (currentString.includes('.')) {
-            typingElement.innerHTML = currentString.replace('.', '<span class="dot">.</span>');
+            typingElement.innerHTML = currentString.replace('.', '<span class="text-blue-500">.</span>');
         } else {
             typingElement.textContent = currentString;
         }
-
         let typeSpeed = 150;
-
         if (!isDeleting && charIndex < text.length) {
             charIndex++;
             typeSpeed = 150;
@@ -70,113 +62,47 @@
             isDeleting = !isDeleting;
             typeSpeed = isDeleting ? 2000 : 500;
         }
-
         setTimeout(typeEffect, typeSpeed);
     }
 
-    // Glassmorphism on scroll
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header?.classList.add('scrolled');
+            header?.classList.add('header-scrolled');
         } else {
-            header?.classList.remove('scrolled');
+            header?.classList.remove('header-scrolled');
         }
-
-        // Show/hide header on scroll
         if (window.scrollY > lastScrollY && window.scrollY > 100) {
-            header?.classList.add('hidden');
+            header?.classList.add('-translate-y-full');
         } else {
-            header?.classList.remove('hidden');
+            header?.classList.remove('-translate-y-full');
         }
         lastScrollY = window.scrollY;
     });
 
-    // Active section indicator
-    const sections = document.querySelectorAll('section[id]');
-    
-    function updateActiveLink() {
-        const scrollPos = window.scrollY + 100;
-        
-        sections.forEach(section => {
-            const sectionTop = (section as HTMLElement).offsetTop;
-            const sectionHeight = (section as HTMLElement).offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-
-    window.addEventListener('scroll', updateActiveLink);
     document.addEventListener('DOMContentLoaded', () => {
         typeEffect();
-        updateActiveLink();
     });
 </script>
 
 <style>
-    .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 1.5rem 0;
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(5px);
-        z-index: 100;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    #main-header {
+        background: rgba(6, 6, 10, 0.6);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
-    .header.scrolled {
-        padding: 1rem 0;
-        background: rgba(10, 10, 15, 0.85);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    .header-scrolled {
+        background: rgba(6, 6, 10, 0.9) !important;
+        backdrop-filter: blur(20px) !important;
+        border-bottom-color: rgba(59, 130, 246, 0.15) !important;
     }
 
-    .header.hidden {
-        transform: translateY(-100%);
-    }
-
-    @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        font-size: var(--text-2xl);
-        font-weight: var(--font-bold);
-        color: var(--color-text);
-        display: flex;
-        align-items: center;
-        min-width: 200px;
-    }
-
-    :global(.dot) {
-        color: var(--color-primary);
-    }
-
-    .cursor {
+    .cursor-blink {
         display: inline-block;
-        width: 3px;
-        height: 1.5rem;
-        background-color: var(--color-primary);
-        margin-left: 4px;
+        width: 2px;
+        height: 1.25rem;
+        background: #3b82f6;
+        margin-left: 3px;
         animation: blink 1s infinite;
     }
 
@@ -185,151 +111,50 @@
         50% { opacity: 0; }
     }
 
-    .nav {
-        display: flex;
-        gap: 2.5rem;
-        align-items: center;
-    }
-
-    .nav a:not(.btn-contact) {
-        font-size: var(--text-base);
-        font-weight: var(--font-medium);
-        color: var(--color-muted);
-        position: relative;
-        padding: 0.5rem 0;
-        transition: color 0.3s ease;
-    }
-
-    .nav a:not(.btn-contact)::after {
+    .nav-link::after {
         content: '';
         position: absolute;
         bottom: 0;
         left: 0;
         width: 0;
         height: 2px;
-        background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+        background: linear-gradient(90deg, #3b82f6, #06b6d4);
         transition: width 0.3s ease;
     }
 
-    .nav a:not(.btn-contact):hover,
-    .nav a:not(.btn-contact).active {
-        color: var(--color-text);
-    }
-
-    .nav a:not(.btn-contact).active::after,
-    .nav a:not(.btn-contact):hover::after {
+    .nav-link:hover::after {
         width: 100%;
     }
 
-    .btn-contact {
-        padding: 0.6rem 1.5rem;
-        background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-        color: white !important;
-        border-radius: 0.5rem;
-        font-size: var(--text-sm);
-        font-weight: var(--font-semibold);
-        transition: all 0.3s ease;
-        border: none;
-        box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
-    }
-
-    .btn-contact:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
-    }
-
-    .btn-contact::after {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        gap: 5px;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 0.5rem;
-        cursor: pointer;
-        z-index: 102;
-        padding: 8px;
-        transition: all 0.3s ease;
-    }
-
-    .mobile-menu-btn:hover {
-        background: rgba(59, 130, 246, 0.1);
-        border-color: rgba(59, 130, 246, 0.3);
-    }
-
-    .mobile-menu-btn span {
-        width: 100%;
-        height: 2px;
-        background-color: var(--color-text);
-        border-radius: 2px;
-        transition: all 0.3s ease;
-        transform-origin: center;
-    }
-
-    .mobile-menu-btn.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .mobile-menu-btn.active span:nth-child(2) {
-        opacity: 0;
-        transform: scaleX(0);
-    }
-
-    .mobile-menu-btn.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-
+    /* Mobile menu */
     @media (max-width: 768px) {
-        .header-content {
-            flex-direction: row;
-        }
-
-        .mobile-menu-btn {
+        .nav-links.mobile-open {
             display: flex;
-        }
-
-        .nav {
             position: fixed;
             top: 0;
-            right: -100%;
+            right: 0;
             height: 100vh;
             width: 280px;
             max-width: 80%;
-            background: rgba(15, 15, 20, 0.98);
+            background: rgba(6, 6, 10, 0.98);
             backdrop-filter: blur(20px);
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 2.5rem;
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-            padding: 2rem;
+            gap: 2rem;
             z-index: 101;
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
         }
 
-        .nav.active {
-            right: 0;
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
         }
-
-        .nav a:not(.btn-contact) {
-            font-size: var(--text-xl);
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
         }
-
-        .btn-contact {
-            padding: 0.8rem 2rem;
-            font-size: var(--text-base);
-        }
-
-        .logo {
-            font-size: var(--text-lg);
-            min-width: auto;
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
         }
     }
 </style>

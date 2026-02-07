@@ -1,447 +1,63 @@
 ﻿---
 const experience = [
     {
-        date: "Febrero 2025 - Enero 2026",
+        date: "Feb 2025 - Ene 2026",
         title: "Practicante de People Information",
         company: "BBVA Perú",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg",
-        description: "Automatización de dashboards en Looker Studio (reducción 30% carga operativa). Análisis de procesos de seguridad corporativa y gestión de riesgos.",
+        description: "Automatización de dashboards en Looker Studio (reducción 30% carga operativa). Análisis de procesos de seguridad corporativa.",
         skills: ["Looker Studio", "SQL", "Python", "Data Analysis"],
-        duration: "1 año"
+        duration: "1 año",
+        span: "lg:col-span-2"
     },
     {
-        date: "Agosto 2024 - Actualidad",
+        date: "Ago 2024 - Actualidad",
         title: "Consultor de Automatización",
         company: "Automatization Studio",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
-        description: "Implementación de chatbots con IA y estrategias de Conversational Marketing. Logré un incremento del 60% en ventas mediante automatización.",
-        skills: ["AI", "Chatbots", "Python", "Marketing Automation"],
-        duration: "En curso"
+        description: "Implementación de chatbots con IA y Conversational Marketing. Incremento del 60% en ventas mediante automatización.",
+        skills: ["AI", "Chatbots", "Python", "Marketing"],
+        duration: "En curso",
+        span: "lg:col-span-1"
     },
     {
-        date: "Octubre 2024 - Enero 2025",
+        date: "Oct 2024 - Ene 2025",
         title: "Desarrollador Web Frontend",
         company: "Softaki",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-        description: "Mantenimiento y desarrollo de interfaces con Next.js. Implementación de UX/UI responsivo para optimizar la experiencia de usuario.",
-        skills: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-        duration: "4 meses"
+        description: "Desarrollo de interfaces con Next.js. Implementación de UX/UI responsivo para optimizar la experiencia.",
+        skills: ["Next.js", "React", "TypeScript", "Tailwind"],
+        duration: "4 meses",
+        span: "lg:col-span-1"
     }
 ];
-
-function calculateDuration(dateStr: string): string {
-    const parts = dateStr.split(' - ');
-    if (parts[1] === 'Actualidad') {
-        return 'En curso';
-    }
-    // Simple duration calculator - you can enhance this
-    return dateStr;
-}
 ---
 
-<section id="experience" class="section">
-    <div class="container">
-        <h2 class="section-title animate-on-scroll">Trayectoria Profesional</h2>
-        <div class="timeline">
-            <div class="timeline-progress"></div>
-            {experience.map((job, index) => (
-                <div class="timeline-item animate-on-scroll glass-hover" style={`animation-delay: ${index * 0.15}s`}>
-                    <div class="timeline-marker">
-                        <div class="marker-ring"></div>
-                        <div class="marker-dot"></div>
-                    </div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <div class="company-logo">
-                                <img src={job.logo} alt={job.company} width="48" height="48" />
-                            </div>
-                            <div class="date-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                {job.duration}
-                            </div>
-                        </div>
-                        <span class="date">{job.date}</span>
-                        <h3>{job.title}</h3>
-                        <span class="company">{job.company}</span>
-                        <p class="description">{job.description}</p>
-                        <div class="skills-tags">
-                            {job.skills.map((skill) => (
-                                <span class="skill-tag">{skill}</span>
-                            ))}
-                        </div>
-                        <button class="expand-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                    </div>
-                </div>
+<!-- Section title -->
+<div class="col-span-full flex items-center gap-4 py-4 animate-on-scroll" id="experience">
+    <h2 class="text-2xl md:text-3xl font-bold text-white whitespace-nowrap">Experiencia</h2>
+    <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+</div>
+
+{experience.map((job, index) => (
+    <div class={`bento-tile ${job.span} col-span-full sm:col-span-1 p-6 flex flex-col animate-on-scroll`} style={`animation-delay: ${index * 0.1}s`}>
+        <div class="flex items-start justify-between mb-4">
+            <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-1.5 shrink-0">
+                <img src={job.logo} alt={job.company} class="w-full h-full object-contain" />
+            </div>
+            <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-cyan-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                {job.duration}
+            </div>
+        </div>
+        <span class="text-xs text-blue-400 font-medium mb-1">{job.date}</span>
+        <h3 class="text-lg font-semibold text-white mb-0.5">{job.title}</h3>
+        <span class="text-sm text-cyan-400 font-medium mb-3">{job.company}</span>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-4 flex-1">{job.description}</p>
+        <div class="flex flex-wrap gap-1.5 mt-auto">
+            {job.skills.map((skill) => (
+                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 hover:bg-cyan-500/20 transition-colors">{skill}</span>
             ))}
         </div>
     </div>
-</section>
-
-<style>
-    .section {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 6rem 0;
-    }
-
-    .section-title {
-        font-size: var(--text-5xl);
-        margin-bottom: 4rem;
-        font-weight: var(--font-bold);
-        letter-spacing: -0.02em;
-        text-align: center;
-    }
-
-    .timeline {
-        position: relative;
-        max-width: 900px;
-        margin: 0 auto;
-        padding-left: 40px;
-    }
-
-    /* Animated Timeline Progress Line */
-    .timeline::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: linear-gradient(
-            to bottom,
-            transparent,
-            rgba(59, 130, 246, 0.3) 10%,
-            rgba(59, 130, 246, 0.3) 90%,
-            transparent
-        );
-    }
-
-    .timeline-progress {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 2px;
-        height: 0;
-        background: linear-gradient(
-            to bottom,
-            var(--color-primary),
-            var(--color-accent)
-        );
-        animation: timelineGrow 2s ease-out forwards;
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-    }
-
-    @keyframes timelineGrow {
-        to {
-            height: 100%;
-        }
-    }
-
-    .timeline-item {
-        position: relative;
-        margin-bottom: 4rem;
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-
-    .timeline-item.is-visible {
-        animation: slideInTimeline 0.6s ease-out forwards;
-    }
-
-    @keyframes slideInTimeline {
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    .timeline-item:last-child {
-        margin-bottom: 0;
-    }
-
-    /* Timeline Marker */
-    .timeline-marker {
-        position: absolute;
-        left: -49px;
-        top: 24px;
-        width: 20px;
-        height: 20px;
-        z-index: 10;
-    }
-
-    .marker-ring {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        border: 2px solid var(--color-primary);
-        border-radius: 50%;
-        animation: pulseRing 2s ease-out infinite;
-    }
-
-    @keyframes pulseRing {
-        0%, 100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-        50% {
-            transform: scale(1.5);
-            opacity: 0;
-        }
-    }
-
-    .marker-dot {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 8px;
-        height: 8px;
-        background: var(--color-primary);
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
-        animation: glowDot 2s ease-in-out infinite;
-    }
-
-    @keyframes glowDot {
-        0%, 100% {
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
-        }
-        50% {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 1);
-        }
-    }
-
-    .timeline-item:hover .marker-dot {
-        background: var(--color-accent);
-        transform: scale(1.3);
-        transition: all 0.3s ease;
-    }
-
-    /* Timeline Card */
-    .timeline-card {
-        background: rgba(26, 26, 26, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 1rem;
-        padding: 2rem;
-        position: relative;
-        transition: all 0.4s ease;
-        backdrop-filter: blur(10px);
-    }
-
-    .timeline-item:hover .timeline-card {
-        background: rgba(26, 26, 26, 0.6);
-        border-color: rgba(59, 130, 246, 0.5);
-        transform: translateX(8px);
-        box-shadow: 
-            0 10px 30px rgba(0, 0, 0, 0.4),
-            0 0 20px rgba(59, 130, 246, 0.2);
-    }
-
-    /* Card Header */
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .company-logo {
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 0.5rem;
-        padding: 0.5rem;
-        transition: all 0.3s ease;
-    }
-
-    .timeline-item:hover .company-logo {
-        background: rgba(59, 130, 246, 0.1);
-        transform: rotate(-5deg) scale(1.1);
-    }
-
-    .company-logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    .date-badge {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.8rem;
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.3);
-        border-radius: 2rem;
-        color: var(--color-tech);
-        font-size: var(--text-xs);
-        font-weight: var(--font-semibold);
-    }
-
-    .date {
-        display: block;
-        font-size: var(--text-sm);
-        color: var(--color-primary);
-        margin-bottom: 0.75rem;
-        font-weight: var(--font-medium);
-        letter-spacing: 0.02em;
-    }
-
-    h3 {
-        font-size: var(--text-2xl);
-        margin-bottom: 0.5rem;
-        font-weight: var(--font-semibold);
-        color: var(--color-text);
-        transition: color 0.3s ease;
-    }
-
-    .timeline-item:hover h3 {
-        color: var(--color-primary);
-    }
-
-    .company {
-        display: block;
-        font-size: var(--text-base);
-        color: var(--color-accent);
-        margin-bottom: 1rem;
-        font-weight: var(--font-medium);
-    }
-
-    .description {
-        color: var(--color-muted);
-        line-height: var(--leading-relaxed);
-        margin-bottom: 1.5rem;
-        font-size: var(--text-base);
-        font-weight: var(--font-normal);
-    }
-
-    /* Skills Tags */
-    .skills-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-        margin-top: 1.5rem;
-    }
-
-    .skill-tag {
-        padding: 0.4rem 0.9rem;
-        background: rgba(6, 182, 212, 0.1);
-        border: 1px solid rgba(6, 182, 212, 0.3);
-        border-radius: 0.4rem;
-        color: var(--color-tech);
-        font-size: var(--text-sm);
-        font-weight: var(--font-medium);
-        transition: all 0.3s ease;
-    }
-
-    .skill-tag:hover {
-        background: rgba(6, 182, 212, 0.2);
-        border-color: var(--color-tech);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(6, 182, 212, 0.3);
-    }
-
-    /* Expand Button */
-    .expand-btn {
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        color: var(--color-muted);
-    }
-
-    .expand-btn:hover {
-        background: rgba(59, 130, 246, 0.2);
-        border-color: var(--color-primary);
-        color: var(--color-primary);
-        transform: translateY(2px);
-    }
-
-    @media (max-width: 768px) {
-        .timeline {
-            padding-left: 30px;
-        }
-
-        .timeline-marker {
-            left: -39px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-        }
-
-        h3 {
-            font-size: 1.25rem;
-        }
-
-        .timeline-card {
-            padding: 1.5rem;
-        }
-
-        .card-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .timeline-item:hover .timeline-card {
-            transform: none;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .timeline {
-            padding-left: 20px;
-        }
-
-        .timeline-marker {
-            left: -29px;
-            width: 16px;
-            height: 16px;
-        }
-
-        .marker-ring {
-            width: 16px;
-            height: 16px;
-        }
-
-        .marker-dot {
-            top: 5px;
-            left: 5px;
-            width: 6px;
-            height: 6px;
-        }
-
-        .section-title {
-            font-size: 2rem;
-        }
-
-        .timeline-card {
-            padding: 1.25rem;
-        }
-
-        .tech-tags {
-            gap: 0.4rem;
-        }
-
-        .tech-tag {
-            padding: 0.25rem 0.6rem;
-            font-size: 0.7rem;
-        }
-    }
-</style>
+))}

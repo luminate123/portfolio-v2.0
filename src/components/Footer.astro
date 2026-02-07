@@ -2,99 +2,81 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer id="contact" class="section footer">
-    <div class="wave-decoration">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path
-                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                fill="currentColor"></path>
-        </svg>
-    </div>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-main animate-on-scroll">
-                <h2>¿Listo para trabajar juntos?</h2>
-                <p>
-                    Estoy abierto a nuevas oportunidades y colaboraciones.
-                    ¡Hablemos!
-                </p>
-                <form
-                    class="contact-form"
-                    action="https://formspree.io/f/mbdarzre"
-                    method="POST"
-                >
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label for="contact-name">Nombre</label>
-                            <input
-                                id="contact-name"
-                                name="Nombre"
-                                type="text"
-                                placeholder="Tu nombre"
-                                required
-                            />
-                        </div>
-                        <div class="form-field">
-                            <label for="contact-email">Correo</label>
-                            <input
-                                id="contact-email"
-                                name="Correo"
-                                type="email"
-                                placeholder="tu@email.com"
-                                required
-                            />
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="contact-message">Mensaje</label>
-                        <textarea
-                            id="contact-message"
-                            name="Mensaje"
-                            rows="4"
-                            placeholder="Cuéntame sobre tu proyecto"
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">
-                        Enviar mensaje
-                    </button>
-                </form>
+<!-- Section title -->
+<div class="col-span-full flex items-center gap-4 py-4 animate-on-scroll" id="contact">
+    <h2 class="text-2xl md:text-3xl font-bold text-white whitespace-nowrap">Contacto</h2>
+    <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+</div>
+
+<!-- Contact form tile — spans 3 cols -->
+<div class="bento-tile col-span-full lg:col-span-3 p-6 md:p-8 animate-on-scroll">
+    <h3 class="text-xl md:text-2xl font-bold mb-2">
+        <span class="gradient-text">¿Listo para trabajar juntos?</span>
+    </h3>
+    <p class="text-sm text-zinc-400 mb-6">Estoy abierto a nuevas oportunidades y colaboraciones.</p>
+    
+    <form class="contact-form flex flex-col gap-3" action="https://formspree.io/f/mbdarzre" method="POST">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="flex flex-col gap-1.5">
+                <label for="contact-name" class="text-xs text-zinc-500 font-medium">Nombre</label>
+                <input id="contact-name" name="Nombre" type="text" placeholder="Tu nombre" required
+                    class="w-full px-4 py-2.5 rounded-xl border border-white/8 bg-white/4 text-white text-sm outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all placeholder-zinc-600" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+                <label for="contact-email" class="text-xs text-zinc-500 font-medium">Correo</label>
+                <input id="contact-email" name="Correo" type="email" placeholder="tu@email.com" required
+                    class="w-full px-4 py-2.5 rounded-xl border border-white/8 bg-white/4 text-white text-sm outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all placeholder-zinc-600" />
             </div>
         </div>
-        <div class="footer-bottom animate-on-scroll delay-200">
-            <p>
-                &copy; {currentYear} Sebastian Senmache. Todos los derechos reservados.
-            </p>
-            <p class="built-with">
-                Construido con <span class="heart">❤</span> usando Astro
-            </p>
+        <div class="flex flex-col gap-1.5">
+            <label for="contact-message" class="text-xs text-zinc-500 font-medium">Mensaje</label>
+            <textarea id="contact-message" name="Mensaje" rows="4" placeholder="Cuéntame sobre tu proyecto" required
+                class="w-full px-4 py-2.5 rounded-xl border border-white/8 bg-white/4 text-white text-sm outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all resize-y min-h-[100px] placeholder-zinc-600"></textarea>
         </div>
-    </div>
-    <button class="back-to-top" aria-label="Volver arriba">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><polyline points="18 15 12 9 6 15"></polyline></svg
-        >
-    </button>
-</footer>
+        <button type="submit" class="self-start px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-semibold hover:-translate-y-0.5 transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 cursor-pointer border-none mt-1">
+            Enviar mensaje
+        </button>
+    </form>
+</div>
 
-<div class="toast" role="status" aria-live="polite">
-    <div class="toast-content">
-        <span class="toast-title">¡Mensaje enviado!</span>
-        <span class="toast-text">Gracias, te responderé lo antes posible.</span>
+<!-- CTA / info tile -->
+<div class="bento-tile col-span-full lg:col-span-1 p-6 flex flex-col justify-between animate-on-scroll" style="animation-delay: 0.1s">
+    <div>
+        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </div>
+        <h4 class="text-base font-semibold text-white mb-2">Email directo</h4>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-4">También puedes escribirme directamente por email si lo prefieres.</p>
     </div>
-    <button class="toast-close" aria-label="Cerrar notificación">×</button>
+    <a href="mailto:sebastian@email.com" class="text-sm text-blue-400 hover:text-blue-300 font-medium transition-colors flex items-center gap-1.5">
+        Enviar email
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+</div>
+
+<!-- Footer bottom — full width -->
+<div class="col-span-full text-center py-6 border-t border-white/5 mt-4 animate-on-scroll">
+    <p class="text-xs text-zinc-600 mb-1">&copy; {currentYear} Sebastian Senmache. Todos los derechos reservados.</p>
+    <p class="text-xs text-zinc-700 flex items-center justify-center gap-1">
+        Construido con <span class="text-red-400 animate-pulse">❤</span> usando Astro
+    </p>
+</div>
+
+<!-- Back to top -->
+<button class="back-to-top" aria-label="Volver arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+<!-- Toast notification -->
+<div class="toast" role="status" aria-live="polite">
+    <div class="flex flex-col gap-0.5">
+        <span class="text-sm font-semibold text-white">¡Mensaje enviado!</span>
+        <span class="text-xs text-zinc-400">Gracias, te responderé lo antes posible.</span>
+    </div>
+    <button class="toast-close text-zinc-500 text-lg leading-none cursor-pointer bg-transparent border-none" aria-label="Cerrar">×</button>
 </div>
 
 <script>
-    // Back to top button
     const backToTopBtn = document.querySelector(".back-to-top");
     const toast = document.querySelector(".toast");
     const toastClose = document.querySelector(".toast-close");
@@ -109,10 +91,7 @@ const currentYear = new Date().getFullYear();
     });
 
     backToTopBtn?.addEventListener("click", () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
     const showToast = () => {
@@ -120,343 +99,34 @@ const currentYear = new Date().getFullYear();
         window.setTimeout(() => toast?.classList.remove("visible"), 5000);
     };
 
-    toastClose?.addEventListener("click", () => {
-        toast?.classList.remove("visible");
-    });
+    toastClose?.addEventListener("click", () => toast?.classList.remove("visible"));
 
     contactForm?.addEventListener("submit", async (event) => {
         event.preventDefault();
         const form = event.currentTarget as HTMLFormElement;
         const formData = new FormData(form);
-
         try {
             const response = await fetch(form.action, {
                 method: "POST",
-                headers: {
-                    Accept: "application/json",
-                },
+                headers: { Accept: "application/json" },
                 body: formData,
             });
-
             if (response.ok) {
                 form.reset();
                 showToast();
             }
-        } catch (error) {
-            // Silently fail for now
-        }
+        } catch (error) {}
     });
 </script>
 
 <style>
-    .footer {
-        min-height: 60vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background: transparent;
-        padding: 4rem 0 2rem;
-        margin: 0;
-        border: none;
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Wave Decoration */
-    .wave-decoration {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 80px;
-        color: rgba(59, 130, 246, 0.1);
-        transform: translateY(-1px);
-    }
-
-    .wave-decoration svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-
-    .footer-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 4rem;
-        position: relative;
-        z-index: 1;
-    }
-
-    .footer-main h2 {
-        font-size: var(--text-5xl);
-        margin-bottom: 1.5rem;
-        background: linear-gradient(
-            135deg,
-            var(--color-primary),
-            var(--color-accent)
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-weight: var(--font-bold);
-        letter-spacing: -0.02em;
-    }
-
-    .footer-main p {
-        font-size: var(--text-xl);
-        font-weight: var(--font-normal);
-        color: var(--color-muted);
-        margin-bottom: 2rem;
-    }
-
-    .contact-form {
-        margin-top: 2rem;
-        width: min(720px, 100%);
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-    }
-
-    .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-    }
-
-    .form-field {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: left;
-    }
-
-    .form-field label {
-        font-size: var(--text-sm);
-        color: var(--color-muted);
-        font-weight: var(--font-medium);
-    }
-
-    .form-field input,
-    .form-field textarea {
-        width: 100%;
-        padding: 0.9rem 1rem;
-        border-radius: 0.6rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.04);
-        color: var(--color-text);
-        font-size: var(--text-base);
-        transition:
-            border-color 0.3s ease,
-            box-shadow 0.3s ease,
-            background 0.3s ease;
-        outline: none;
-    }
-
-    .form-field textarea {
-        resize: vertical;
-        min-height: 140px;
-    }
-
-    .form-field input:focus,
-    .form-field textarea:focus {
-        border-color: rgba(59, 130, 246, 0.6);
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-        background: rgba(255, 255, 255, 0.06);
-    }
-
-    .btn-submit {
-        align-self: center;
-        padding: 0.9rem 2.4rem;
-        border-radius: 0.6rem;
-        border: none;
-        font-weight: var(--font-semibold);
-        font-size: var(--text-base);
-        color: white;
-        background: linear-gradient(
-            135deg,
-            var(--color-primary),
-            var(--color-accent)
-        );
-        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-        cursor: pointer;
-        transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
-    }
-
-    .btn-submit:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
-    }
-
-    .toast {
-        position: fixed;
-        right: 2rem;
-        bottom: 2rem;
-        background: rgba(15, 23, 42, 0.95);
-        border: 1px solid rgba(59, 130, 246, 0.4);
-        border-radius: 0.9rem;
-        padding: 1rem 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
-        opacity: 0;
-        transform: translateY(20px);
-        pointer-events: none;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        z-index: 120;
-        max-width: 320px;
-    }
-
-    .toast.visible {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .toast-content {
-        display: flex;
-        flex-direction: column;
-        gap: 0.2rem;
-        color: var(--color-text);
-    }
-
-    .toast-title {
-        font-weight: var(--font-semibold);
-        font-size: var(--text-base);
-    }
-
-    .toast-text {
-        font-size: var(--text-sm);
-        color: var(--color-muted);
-    }
-
-    .toast-close {
-        background: transparent;
-        border: none;
-        color: var(--color-muted);
-        font-size: 1.25rem;
-        cursor: pointer;
-        line-height: 1;
-    }
-
-    .footer-links {
-        margin-top: 3rem;
-    }
-
-    .social-links {
-        display: flex;
-        gap: 1.5rem;
-        justify-content: center;
-    }
-
-    .social-icon {
-        width: 56px;
-        height: 56px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        color: var(--color-muted);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .social-icon::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            135deg,
-            var(--color-primary),
-            var(--color-accent)
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        border-radius: 50%;
-    }
-
-    .social-icon svg {
-        position: relative;
-        z-index: 1;
-        transition: transform 0.3s ease;
-    }
-
-    .social-icon:hover {
-        border-color: transparent;
-        transform: translateY(-5px) scale(1.1);
-        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
-    }
-
-    .social-icon:hover::before {
-        opacity: 1;
-    }
-
-    .social-icon:hover svg {
-        color: white;
-        transform: scale(1.1);
-    }
-
-    .footer-bottom {
-        text-align: center;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        position: relative;
-        z-index: 1;
-    }
-
-    .footer-bottom p {
-        font-size: var(--text-sm);
-        font-weight: var(--font-normal);
-        color: var(--color-muted);
-        margin: 0.5rem 0;
-    }
-
-    .built-with {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.3rem;
-    }
-
-    .heart {
-        color: #f5576c;
-        animation: heartbeat 1.5s ease-in-out infinite;
-    }
-
-    @keyframes heartbeat {
-        0%,
-        100% {
-            transform: scale(1);
-        }
-        10%,
-        30% {
-            transform: scale(1.1);
-        }
-        20%,
-        40% {
-            transform: scale(1);
-        }
-    }
-
-    /* Back to Top Button */
     .back-to-top {
         position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(
-            135deg,
-            var(--color-primary),
-            var(--color-accent)
-        );
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, #3b82f6, #06b6d4);
         border: none;
         border-radius: 50%;
         color: white;
@@ -466,7 +136,7 @@ const currentYear = new Date().getFullYear();
         justify-content: center;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(100px);
+        transform: translateY(60px);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         z-index: 99;
         box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
@@ -479,68 +149,41 @@ const currentYear = new Date().getFullYear();
     }
 
     .back-to-top:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(59, 130, 246, 0.6);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
     }
 
-    .back-to-top svg {
-        animation: bounceUp 1.5s ease-in-out infinite;
+    .toast {
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 120;
+        backdrop-filter: blur(10px);
     }
 
-    @keyframes bounceUp {
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-3px);
-        }
+    .toast.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
-    @media (max-width: 768px) {
-        .footer-content {
-            flex-direction: column;
-            gap: 3rem;
-            text-align: center;
-        }
-
-        .footer-main h2 {
-            font-size: 2.5rem;
-        }
-
-        .footer-main p {
-            font-size: 1rem;
-        }
-
-        .form-row {
-            grid-template-columns: 1fr;
-        }
-
-        .btn-submit {
-            width: 100%;
-        }
-
-        .social-links {
-            flex-wrap: wrap;
-        }
-
-        .social-icon {
-            width: 48px;
-            height: 48px;
-        }
-
-        .back-to-top {
-            bottom: 1.5rem;
-            right: 1.5rem;
-            width: 45px;
-            height: 45px;
-        }
-
+    @media (max-width: 640px) {
         .toast {
-            right: 1rem;
-            left: 1rem;
-            bottom: 1rem;
-            max-width: none;
+            right: 0.75rem;
+            left: 0.75rem;
+            bottom: 0.75rem;
         }
     }
 </style>
