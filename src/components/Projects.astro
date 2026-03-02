@@ -1,44 +1,28 @@
 ﻿---
 const projects = [
     {
-        title: "E-commerce Dashboard",
+        title: "Página web - Clinica Estetica",
         description: "Panel de administración completo para tiendas online con análisis en tiempo real y reportes avanzados.",
-        tags: ["React", "Tailwind", "Node.js", "MongoDB"],
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-        liveUrl: "#",
-        codeUrl: "#",
+        tags: ["React", "Tailwind", "Node.js"],
+        gallery: [
+            "Pagwebclinica.png",
+            "clinica-especialidades.png",
+            "clinica3.png",
+        ],
+        liveUrl: "https://clinica.ssenmache8.workers.dev",
         featured: true,
-        span: "lg:col-span-2 lg:row-span-2"
     },
     {
-        title: "App de Finanzas",
-        description: "Gestión de gastos personales con gráficos interactivos y análisis predictivo.",
-        tags: ["React Native", "Firebase", "TypeScript"],
-        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&h=400&fit=crop",
-        liveUrl: "#",
-        codeUrl: "#",
+        title: "Tienda Online - Pokemon",
+        description: "Tienda online de merchandising de Pokemon con catálogo dinámico, carrito de compras.",
+        tags: ["React Native", "Tailwind", "TypeScript"],
+        gallery: [
+            "poke-store1.png",
+            "poke-store2.png",
+            "poke-store3.png",
+        ],
+        liveUrl: "https://pokemon-store-psi.vercel.app/",
         featured: true,
-        span: "lg:col-span-2"
-    },
-    {
-        title: "Portfolio Minimalista",
-        description: "Portfolio web enfocado en tipografía, espacio y animaciones sutiles.",
-        tags: ["Astro", "CSS", "JavaScript"],
-        image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop",
-        liveUrl: "#",
-        codeUrl: "#",
-        featured: false,
-        span: "lg:col-span-2"
-    },
-    {
-        title: "Automation Studio",
-        description: "Plataforma de automatización empresarial con IA, chatbots y análisis de conversaciones.",
-        tags: ["Python", "OpenAI", "FastAPI", "React"],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-        liveUrl: "#",
-        codeUrl: "#",
-        featured: true,
-        span: "lg:col-span-2"
     }
 ];
 ---
@@ -49,48 +33,715 @@ const projects = [
     <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
 </div>
 
-{projects.map((project, index) => (
-    <article class={`bento-tile project-tile ${project.span} col-span-full sm:col-span-1 group animate-on-scroll`} style={`animation-delay: ${index * 0.1}s`}>
-        <div class="relative overflow-hidden h-44 md:h-52 lg:h-full lg:min-h-[220px]">
-            <img src={project.image} alt={project.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#06060a] via-[#06060a]/70 to-transparent"></div>
-            
-            {project.featured && (
-                <span class="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs font-semibold text-blue-400 backdrop-blur-sm">
-                    Featured
-                </span>
-            )}
-            
-            <!-- Content overlay -->
-            <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                <h3 class="text-lg md:text-xl font-semibold text-white mb-1.5 group-hover:text-blue-400 transition-colors">{project.title}</h3>
-                <p class="text-sm text-zinc-400 leading-relaxed mb-3 line-clamp-2">{project.description}</p>
-                <div class="flex items-center justify-between gap-3">
-                    <div class="flex flex-wrap gap-1.5">
-                        {project.tags.map(tag => (
-                            <span class="px-2 py-0.5 text-[11px] font-medium rounded bg-white/10 text-zinc-300">{tag}</span>
+<!-- Showcase Projects -->
+<div class="col-span-full flex flex-col gap-6">
+    {projects.map((project, index) => (
+        <article
+            class="showcase-card animate-on-scroll"
+            style={`animation-delay: ${index * 0.12}s`}
+            data-project-index={index}
+            data-gallery={JSON.stringify(project.gallery)}
+            data-title={project.title}
+        >
+            <!-- Layout: image left, info right on desktop -->
+            <div class="showcase-inner">
+                <!-- Carousel Area -->
+                <div class="showcase-carousel" data-carousel={index}>
+                    <div class="carousel-track">
+                        {project.gallery.map((src, i) => (
+                            <img
+                                src={src}
+                                alt={`${project.title} - ${i + 1}`}
+                                loading="lazy"
+                                class={`carousel-slide ${i === 0 ? 'active' : ''}`}
+                                data-slide={i}
+                                style="cursor: zoom-in;"
+                            />
                         ))}
                     </div>
-                    <div class="flex gap-2 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {project.liveUrl && (
-                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-500/20 text-blue-400 hover:bg-blue-500/40 transition-colors" aria-label="Ver live">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            </a>
-                        )}
-                        {project.codeUrl && (
-                            <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/10 text-zinc-300 hover:bg-white/20 transition-colors" aria-label="Ver código">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                            </a>
-                        )}
+
+                    <!-- Navigation arrows -->
+                    <button class="carousel-btn carousel-btn-prev" data-dir="-1" aria-label="Anterior">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button class="carousel-btn carousel-btn-next" data-dir="1" aria-label="Siguiente">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+
+                    <!-- Dots indicator -->
+                    <div class="carousel-dots">
+                        {project.gallery.map((_src, i) => (
+                            <button
+                                class={`carousel-dot ${i === 0 ? 'active' : ''}`}
+                                data-dot={i}
+                                aria-label={`Ir a imagen ${i + 1}`}
+                            />
+                        ))}
+                    </div>
+
+                    <!-- Expand hint -->
+                    <div class="carousel-expand-hint">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                        Ampliar
+                    </div>
+
+                    <!-- Image counter pill -->
+                    <div class="carousel-counter">
+                        <span data-current>1</span> / <span>{project.gallery.length}</span>
+                    </div>
+                </div>
+
+                <!-- Info Area -->
+                <div class="showcase-info">
+                    <div class="showcase-info-top">
+                        <div class="flex items-center gap-2.5 mb-3 flex-wrap">
+                            {project.featured && (
+                                <span class="px-2.5 py-1 rounded-full bg-blue-500/15 border border-blue-500/25 text-xs font-semibold text-blue-400">
+                                    Featured
+                                </span>
+                            )}
+                            <span class="text-xs text-zinc-500 font-mono">0{index + 1}</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-3 leading-tight">{project.title}</h3>
+                        <p class="text-sm md:text-base text-zinc-400 leading-relaxed mb-5">{project.description}</p>
+                    </div>
+
+                    <div class="showcase-info-bottom">
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            {project.tags.map(tag => (
+                                <span class="tag-pill">{tag}</span>
+                            ))}
+                        </div>
+
+                        <!-- Action buttons -->
+                        <div class="flex gap-3">
+                            {project.liveUrl && (
+                                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="showcase-btn showcase-btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                    Ver proyecto
+                                </a>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
+        </article>
+    ))}
+</div>
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+        <!-- Header -->
+        <div class="lightbox-header">
+            <h3 id="lightbox-title" class="text-lg font-semibold text-white truncate"></h3>
+            <div class="flex items-center gap-3 shrink-0">
+                <span id="lightbox-counter" class="text-sm text-zinc-400 font-mono"></span>
+                <button id="lightbox-close" class="lightbox-close-btn" aria-label="Cerrar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
         </div>
-    </article>
-))}
-
+        <!-- Image container -->
+        <div class="lightbox-image-wrapper">
+            <button id="lightbox-prev" class="lightbox-nav lightbox-nav-prev" aria-label="Anterior">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <img id="lightbox-img" src="" alt="" class="lightbox-image" />
+            <button id="lightbox-next" class="lightbox-nav lightbox-nav-next" aria-label="Siguiente">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+    </div>
+</div>
 <style>
-    .project-tile {
-        padding: 0 !important;
+    /* ============================
+       Showcase Card Layout
+       ============================ */
+    .showcase-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 1.5rem;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        position: relative;
+    }
+
+    .showcase-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(
+            600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(59, 130, 246, 0.04),
+            transparent 40%
+        );
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .showcase-card:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow:
+            0 8px 40px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(59, 130, 246, 0.04);
+    }
+
+    .showcase-card:hover::before {
+        opacity: 1;
+    }
+
+    .showcase-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    @media (min-width: 768px) {
+        .showcase-inner {
+            grid-template-columns: 1.4fr 1fr;
+        }
+    }
+
+    /* ============================
+       Carousel
+       ============================ */
+    .showcase-carousel {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #0a0a0f;
+    }
+
+    @media (min-width: 768px) {
+        .showcase-carousel {
+            aspect-ratio: auto;
+            min-height: 320px;
+        }
+    }
+
+    .carousel-track {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        opacity: 0;
+        transition: opacity 0.6s ease, transform 0.6s ease;
+        transform: scale(1.03);
+    }
+
+    .carousel-slide.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Nav buttons */
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        cursor: pointer;
+        z-index: 3;
+        opacity: 0;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(8px);
+    }
+
+    .showcase-carousel:hover .carousel-btn {
+        opacity: 1;
+    }
+
+    .carousel-btn:hover {
+        background: rgba(59, 130, 246, 0.5);
+        border-color: rgba(59, 130, 246, 0.6);
+        transform: translateY(-50%) scale(1.08);
+    }
+
+    .carousel-btn-prev { left: 0.75rem; }
+    .carousel-btn-next { right: 0.75rem; }
+
+    /* Dots */
+    .carousel-dots {
+        position: absolute;
+        bottom: 0.75rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.4rem;
+        z-index: 3;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        transition: all 0.3s ease;
+    }
+
+    .carousel-dot.active {
+        background: #3b82f6;
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+        width: 22px;
+        border-radius: 999px;
+    }
+
+    /* Counter pill */
+    .carousel-counter {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.25rem 0.65rem;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+        z-index: 3;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* ============================
+       Info Panel
+       ============================ */
+    .showcase-info {
+        padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 0;
+    }
+
+    @media (min-width: 768px) {
+        .showcase-info {
+            padding: 2rem;
+        }
+    }
+
+    .showcase-info-top {
+        flex: 1;
+    }
+
+    /* Tags */
+    .tag-pill {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.72rem;
+        font-weight: 500;
+        border-radius: 0.5rem;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        color: #a1a1aa;
+        transition: all 0.25s ease;
+    }
+
+    .showcase-card:hover .tag-pill {
+        background: rgba(59, 130, 246, 0.08);
+        border-color: rgba(59, 130, 246, 0.15);
+        color: #c4c4cf;
+    }
+
+    /* Action buttons */
+    .showcase-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.75rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .showcase-btn-primary {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.15));
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #93bbfc;
+    }
+
+    .showcase-btn-primary:hover {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(139, 92, 246, 0.25));
+        border-color: rgba(59, 130, 246, 0.5);
+        color: #bdd4fd;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+    }
+
+    .showcase-btn-secondary {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #a1a1aa;
+    }
+
+    .showcase-btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: #e4e4e7;
+        transform: translateY(-1px);
+    }
+
+    /* ============================
+       Expand Hint
+       ============================ */
+    .carousel-expand-hint {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.3rem 0.65rem;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.6);
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .showcase-carousel:hover .carousel-expand-hint {
+        opacity: 1;
+    }
+
+    /* ============================
+       Lightbox Modal
+       ============================ */
+    .lightbox-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+    }
+
+    .lightbox-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .lightbox-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    .lightbox-content {
+        position: relative;
+        width: 92vw;
+        max-width: 1100px;
+        max-height: 92vh;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        transform: scale(0.92) translateY(16px);
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .lightbox-overlay.active .lightbox-content {
+        transform: scale(1) translateY(0);
+    }
+
+    .lightbox-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0.25rem;
+        gap: 1rem;
+    }
+
+    .lightbox-close-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #a1a1aa;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .lightbox-close-btn:hover {
+        background: rgba(239, 68, 68, 0.2);
+        border-color: rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+        transform: scale(1.05);
+    }
+
+    .lightbox-image-wrapper {
+        position: relative;
+        height: 75vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1rem;
+        overflow: hidden;
+        background: #08080c;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .lightbox-image {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        transition: opacity 0.35s ease;
+    }
+
+    .lightbox-image.loading {
+        opacity: 0.2;
+    }
+
+    .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        backdrop-filter: blur(8px);
+        z-index: 2;
+    }
+
+    .lightbox-nav:hover {
+        background: rgba(59, 130, 246, 0.45);
+        border-color: rgba(59, 130, 246, 0.6);
+        transform: translateY(-50%) scale(1.08);
+    }
+
+    .lightbox-nav-prev { left: 1rem; }
+    .lightbox-nav-next { right: 1rem; }
+
+    @media (max-width: 640px) {
+        .lightbox-content {
+            width: 96vw;
+            max-height: 95vh;
+        }
+        .lightbox-nav {
+            width: 38px;
+            height: 38px;
+        }
+        .lightbox-nav-prev { left: 0.5rem; }
+        .lightbox-nav-next { right: 0.5rem; }
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize all carousels
+        document.querySelectorAll('.showcase-carousel').forEach(carousel => {
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            const counter = carousel.querySelector('[data-current]');
+            const btnPrev = carousel.querySelector('.carousel-btn-prev');
+            const btnNext = carousel.querySelector('.carousel-btn-next');
+            let current = 0;
+            let autoplayTimer: ReturnType<typeof setInterval> | null = null;
+
+            function goTo(index: number) {
+                // Wrap around
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+
+                slides[current]?.classList.remove('active');
+                dots[current]?.classList.remove('active');
+                current = index;
+                slides[current]?.classList.add('active');
+                dots[current]?.classList.add('active');
+                if (counter) counter.textContent = String(current + 1);
+            }
+
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayTimer = setInterval(() => goTo(current + 1), 5000);
+            }
+
+            function stopAutoplay() {
+                if (autoplayTimer) {
+                    clearInterval(autoplayTimer);
+                    autoplayTimer = null;
+                }
+            }
+
+            // Button clicks
+            btnPrev?.addEventListener('click', () => {
+                goTo(current - 1);
+                startAutoplay(); // Reset timer on manual nav
+            });
+
+            btnNext?.addEventListener('click', () => {
+                goTo(current + 1);
+                startAutoplay();
+            });
+
+            // Dot clicks
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    goTo(i);
+                    startAutoplay();
+                });
+            });
+
+            // Pause autoplay on hover
+            carousel.addEventListener('mouseenter', stopAutoplay);
+            carousel.addEventListener('mouseleave', startAutoplay);
+
+            // Touch / swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = (e as TouchEvent).changedTouches[0].screenX;
+                stopAutoplay();
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = (e as TouchEvent).changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    goTo(diff > 0 ? current + 1 : current - 1);
+                }
+                startAutoplay();
+            }, { passive: true });
+
+            // Start autoplay
+            startAutoplay();
+        });
+
+        // Mouse glow effect for cards
+        document.querySelectorAll('.showcase-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = (card as HTMLElement).getBoundingClientRect();
+                const x = (e as MouseEvent).clientX - rect.left;
+                const y = (e as MouseEvent).clientY - rect.top;
+                (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+                (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // ============================
+        // Lightbox
+        // ============================
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+        const lightboxTitle = document.getElementById('lightbox-title')!;
+        const lightboxCounter = document.getElementById('lightbox-counter')!;
+        const btnCloseLb = document.getElementById('lightbox-close')!;
+        const btnPrevLb = document.getElementById('lightbox-prev')!;
+        const btnNextLb = document.getElementById('lightbox-next')!;
+
+        let lbGallery: string[] = [];
+        let lbIndex = 0;
+
+        function openLightbox(gallery: string[], title: string, startIndex = 0) {
+            lbGallery = gallery;
+            lbIndex = startIndex;
+            lightboxTitle.textContent = title;
+            showLbImage(lbIndex);
+            lightbox!.classList.add('active');
+            lightbox!.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox!.classList.remove('active');
+            lightbox!.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        function showLbImage(index: number) {
+            if (index < 0) index = lbGallery.length - 1;
+            if (index >= lbGallery.length) index = 0;
+            lbIndex = index;
+            lightboxImg.classList.add('loading');
+            lightboxImg.src = lbGallery[index];
+            lightboxImg.alt = `${lightboxTitle.textContent} - Foto ${index + 1}`;
+            lightboxImg.onload = () => lightboxImg.classList.remove('loading');
+            lightboxCounter.textContent = `${index + 1} / ${lbGallery.length}`;
+        }
+
+        // Open lightbox when clicking on carousel images
+        document.querySelectorAll('.showcase-carousel').forEach(carousel => {
+            carousel.addEventListener('click', (e) => {
+                const target = e.target as HTMLElement;
+                // Only open if we clicked on the image itself (not buttons)
+                if (!target.classList.contains('carousel-slide')) return;
+
+                const card = carousel.closest('.showcase-card') as HTMLElement;
+                if (!card) return;
+
+                const gallery = JSON.parse(card.dataset.gallery || '[]');
+                const title = card.dataset.title || '';
+                const slideIndex = parseInt(target.dataset.slide || '0');
+
+                if (gallery.length > 0) {
+                    openLightbox(gallery, title, slideIndex);
+                }
+            });
+        });
+
+        // Close handlers
+        btnCloseLb.addEventListener('click', closeLightbox);
+        document.querySelector('.lightbox-backdrop')?.addEventListener('click', closeLightbox);
+
+        // Navigation
+        btnPrevLb.addEventListener('click', () => showLbImage(lbIndex - 1));
+        btnNextLb.addEventListener('click', () => showLbImage(lbIndex + 1));
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox!.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') showLbImage(lbIndex - 1);
+            if (e.key === 'ArrowRight') showLbImage(lbIndex + 1);
+        });
+    });
+</script>
