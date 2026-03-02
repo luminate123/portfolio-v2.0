@@ -1,6 +1,15 @@
 ﻿---
 const experience = [
     {
+        date: "Feb 2026 - Actualidad",
+        title: "Financial Crime Prevention Analyst I",
+        company: "BBVA Perú",
+        logo: "Logo-BBVA.webp",
+        description: "Análisis crítico de alertas antifraude, ejecución de medidas preventivas (bloqueo de cuentas, tarjetas y baja de canales digitales) mediante análisis inverso de patrones de fraude. Resolución de alertas críticas y atención de solicitudes de apoyo técnico.",
+        skills: ["Looker Studio", "SQL", "Python", "Data Analysis"],
+        duration: "En curso",
+    },
+    {
         date: "Feb 2025 - Ene 2026",
         title: "Practicante de People Information",
         company: "BBVA Perú",
@@ -8,7 +17,6 @@ const experience = [
         description: "Automatización de dashboards en Looker Studio (reducción 30% carga operativa). Análisis de procesos de seguridad corporativa.",
         skills: ["Looker Studio", "SQL", "Python", "Data Analysis"],
         duration: "1 año",
-        span: "lg:col-span-2"
     },
     {
         date: "Ago 2024 - Actualidad",
@@ -18,7 +26,6 @@ const experience = [
         description: "Implementación de chatbots con IA y Conversational Marketing. Incremento del 60% en ventas mediante automatización.",
         skills: ["AI", "Chatbots", "Python", "Marketing"],
         duration: "En curso",
-        span: "lg:col-span-1"
     },
     {
         date: "Oct 2024 - Ene 2025",
@@ -28,7 +35,6 @@ const experience = [
         description: "Desarrollo de interfaces con Next.js. Implementación de UX/UI responsivo para optimizar la experiencia.",
         skills: ["Next.js", "React", "TypeScript", "Tailwind"],
         duration: "4 meses",
-        span: "lg:col-span-1"
     }
 ];
 ---
@@ -39,25 +45,373 @@ const experience = [
     <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
 </div>
 
-{experience.map((job, index) => (
-    <div class={`bento-tile ${job.span} col-span-full sm:col-span-1 p-6 flex flex-col animate-on-scroll`} style={`animation-delay: ${index * 0.1}s`}>
-        <div class="flex items-start justify-between mb-4">
-            <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-1.5 shrink-0">
-                <img src={job.logo} alt={job.company} class="w-full h-full object-contain" />
-            </div>
-            <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-cyan-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                {job.duration}
-            </div>
+<!-- Timeline -->
+<div class="col-span-full">
+    <div class="timeline-container">
+        <!-- Glowing center line -->
+        <div class="timeline-line" aria-hidden="true">
+            <div class="timeline-line-glow"></div>
         </div>
-        <span class="text-xs text-blue-400 font-medium mb-1">{job.date}</span>
-        <h3 class="text-lg font-semibold text-white mb-0.5">{job.title}</h3>
-        <span class="text-sm text-cyan-400 font-medium mb-3">{job.company}</span>
-        <p class="text-sm text-zinc-400 leading-relaxed mb-4 flex-1">{job.description}</p>
-        <div class="flex flex-wrap gap-1.5 mt-auto">
-            {job.skills.map((skill) => (
-                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 hover:bg-cyan-500/20 transition-colors">{skill}</span>
-            ))}
-        </div>
+
+        {experience.map((job, index) => (
+            <div
+                class={`timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'} animate-on-scroll`}
+                style={`animation-delay: ${index * 0.15}s`}
+            >
+                <!-- Node on the line -->
+                <div class="timeline-node">
+                    <div class="timeline-node-ring">
+                        <div class="timeline-node-dot"></div>
+                    </div>
+                </div>
+
+                <!-- Card -->
+                <div class="timeline-card">
+                    <!-- Top bar with logo, company, duration -->
+                    <div class="tc-header">
+                        <div class="tc-company-row">
+                            <div class="tc-logo">
+                                <img src={job.logo} alt={job.company} />
+                            </div>
+                            <div>
+                                <span class="tc-company">{job.company}</span>
+                                <span class="tc-date">{job.date}</span>
+                            </div>
+                        </div>
+                        <span class={`tc-badge ${job.duration === 'En curso' ? 'tc-badge-active' : ''}`}>
+                            {job.duration === 'En curso' && (
+                                <span class="tc-pulse"></span>
+                            )}
+                            {job.duration}
+                        </span>
+                    </div>
+
+                    <!-- Content -->
+                    <h3 class="tc-title">{job.title}</h3>
+                    <p class="tc-description">{job.description}</p>
+
+                    <!-- Skills -->
+                    <div class="tc-skills">
+                        {job.skills.map(skill => (
+                            <span class="tc-skill">{skill}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        ))}
     </div>
-))}
+</div>
+
+<style>
+    /* ============================
+       Timeline Container
+       ============================ */
+    .timeline-container {
+        position: relative;
+        padding: 1.5rem 0 2rem;
+    }
+
+    /* ============================
+       Center Line
+       ============================ */
+    .timeline-line {
+        position: absolute;
+        left: 1.25rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    @media (min-width: 768px) {
+        .timeline-line {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .timeline-line-glow {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        background: linear-gradient(
+            180deg,
+            rgba(59, 130, 246, 0.6) 0%,
+            rgba(6, 182, 212, 0.4) 40%,
+            rgba(139, 92, 246, 0.3) 70%,
+            rgba(255, 255, 255, 0.05) 100%
+        );
+        filter: blur(0.5px);
+        animation: lineGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes lineGlow {
+        0% { opacity: 0.6; }
+        100% { opacity: 1; }
+    }
+
+    /* ============================
+       Timeline Item
+       ============================ */
+    .timeline-item {
+        position: relative;
+        padding-left: 3.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+        .timeline-item {
+            width: 50%;
+            padding-left: 0;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-left {
+            margin-left: 0;
+            padding-right: 3rem;
+            text-align: right;
+        }
+
+        .timeline-right {
+            margin-left: 50%;
+            padding-left: 3rem;
+            text-align: left;
+        }
+    }
+
+    /* ============================
+       Node (dot on the line)
+       ============================ */
+    .timeline-node {
+        position: absolute;
+        left: 1.25rem;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+        .timeline-left .timeline-node {
+            left: auto;
+            right: -0.75rem;
+            transform: translate(50%, -50%);
+        }
+
+        .timeline-right .timeline-node {
+            left: -0.75rem;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .timeline-node-ring {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #06060a;
+        border: 2px solid rgba(59, 130, 246, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+    }
+
+    .timeline-item:hover .timeline-node-ring {
+        border-color: #3b82f6;
+        box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
+        transform: scale(1.2);
+    }
+
+    .timeline-node-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #3b82f6;
+        transition: all 0.4s ease;
+    }
+
+    .timeline-item:hover .timeline-node-dot {
+        background: #60a5fa;
+        box-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
+    }
+
+    /* ============================
+       Card
+       ============================ */
+    .timeline-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 1.25rem;
+        padding: 1.5rem;
+        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        position: relative;
+        text-align: left;
+    }
+
+    .timeline-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(
+            400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(59, 130, 246, 0.06),
+            transparent 40%
+        );
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .timeline-card:hover {
+        border-color: rgba(59, 130, 246, 0.2);
+        transform: translateY(-3px);
+        box-shadow:
+            0 12px 40px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(59, 130, 246, 0.08),
+            0 0 30px rgba(59, 130, 246, 0.05);
+    }
+
+    .timeline-card:hover::before {
+        opacity: 1;
+    }
+
+    /* Card header */
+    .tc-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .tc-company-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .tc-logo {
+        width: 38px;
+        height: 38px;
+        border-radius: 0.6rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.35rem;
+        flex-shrink: 0;
+    }
+
+    .tc-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .tc-company {
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #06b6d4;
+    }
+
+    .tc-date {
+        display: block;
+        font-size: 0.7rem;
+        color: #71717a;
+        font-weight: 500;
+        margin-top: 0.1rem;
+    }
+
+    /* Badge */
+    .tc-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #a1a1aa;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .tc-badge-active {
+        background: rgba(59, 130, 246, 0.1);
+        border-color: rgba(59, 130, 246, 0.25);
+        color: #60a5fa;
+    }
+
+    .tc-pulse {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #3b82f6;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+        50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(59, 130, 246, 0); }
+    }
+
+    /* Title & description */
+    .tc-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    .tc-description {
+        font-size: 0.82rem;
+        color: #a1a1aa;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+    }
+
+    /* Skills */
+    .tc-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .tc-skill {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.68rem;
+        font-weight: 500;
+        border-radius: 0.4rem;
+        background: rgba(6, 182, 212, 0.08);
+        border: 1px solid rgba(6, 182, 212, 0.15);
+        color: #22d3ee;
+        transition: all 0.25s ease;
+    }
+
+    .timeline-card:hover .tc-skill {
+        background: rgba(6, 182, 212, 0.14);
+        border-color: rgba(6, 182, 212, 0.3);
+    }
+</style>
+
+<script>
+    // Mouse glow on timeline cards
+    document.querySelectorAll('.timeline-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = (card as HTMLElement).getBoundingClientRect();
+            const x = (e as MouseEvent).clientX - rect.left;
+            const y = (e as MouseEvent).clientY - rect.top;
+            (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+            (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+</script>
