@@ -2,9 +2,9 @@
 const projects = [
     {
         title: "API de Detección de Fraude",
-        description: "Servicio backend robusto desarrollado para analizar de forma eficiente transacciones financieras e identificar patrones de comportamiento fraudulento, ofreciendo respuestas rápidas y seguras.",
+        description: "Es una API RESTful diseñada para identificar y prevenir phishing y smishing en comunicaciones digitales. Utilizando Inteligencia Artificial.",
         tags: ["Java 21", "Spring Boot 3.3", "Spring Security + JWT", "PostgreSQL", "Maven"],
-        gallery: ["placeholder.png"],
+        gallery: ["API-fraud.png"],
         liveUrl: "https://github.com/luminate123/api-fraud-detection",
         featured: false,
     },
@@ -83,10 +83,10 @@ const projects = [
 </div>
 
 <!-- Showcase Projects -->
-<div class="col-span-full flex flex-col gap-6">
+<div class="col-span-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
     {projects.map((project, index) => (
         <article
-            class="showcase-card animate-on-scroll"
+            class={`showcase-card animate-on-scroll flex flex-col ${project.featured ? 'lg:col-span-2 featured-card' : 'regular-card'}`}
             style={`animation-delay: ${index * 0.12}s`}
             data-project-index={index}
             data-gallery={JSON.stringify(project.gallery)}
@@ -244,14 +244,18 @@ const projects = [
     }
 
     .showcase-inner {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
-    @media (min-width: 768px) {
-        .showcase-inner {
+    /* Solo las tarjetas destacadas se dividen horizontalmente en pantallas grandes */
+    @media (min-width: 1024px) {
+        .featured-card .showcase-inner {
+            display: grid;
             grid-template-columns: 1.4fr 1fr;
+            gap: 0;
+            height: auto;
         }
     }
 
@@ -265,10 +269,15 @@ const projects = [
         background: #0a0a0f;
     }
 
-    @media (min-width: 768px) {
-        .showcase-carousel {
+    @media (min-width: 1024px) {
+        .featured-card .showcase-carousel {
             aspect-ratio: auto;
-            min-height: 320px;
+            min-height: 400px;
+            height: 100%;
+        }
+        
+        .regular-card .showcase-carousel {
+            min-height: 240px;
         }
     }
 
@@ -384,9 +393,10 @@ const projects = [
         flex-direction: column;
         justify-content: space-between;
         min-height: 0;
+        flex-grow: 1; /* Hace que el contenido se estire y alinee botones abajo */
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
         .showcase-info {
             padding: 2rem;
         }
