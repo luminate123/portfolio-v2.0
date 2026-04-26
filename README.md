@@ -1,43 +1,67 @@
-# Astro Starter Kit: Minimal
+# Portafolio v2.0
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Mi portafolio personal y profesional, diseñado y desarrollado con [Astro](https://astro.build/). Este proyecto sirve como un catálogo interactivo y moderno para mostrar mi experiencia laboral, tecnologías adquiridas y los proyectos que he desarrollado (Front-end, Back-end y E-commerce).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Tecnologías Utilizadas
 
-## 🚀 Project Structure
+- **Astro** - Framework web ultrarrápido centrado en el contenido.
+- **Tailwind CSS** - Framework CSS utilitario para estilizado rápido y responsivo.
+- **TypeScript** - Tipado estático para un código más robusto.
+- **React** (si aplica en tus componentes interactivos).
+- Animaciones CSS y JavaScript nativo.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📂 Estructura del Proyecto
+
+El proyecto sigue la convención estándar de Astro:
 
 ```text
 /
-├── 
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+├── public/           # Archivos estáticos como imágenes y logos (ej. placeholder.png)
+├── src/              # Código fuente de la aplicación principal
+│   ├── components/   # Componentes Astro (Header, Hero, Experience, Projects, Footer)
+│   ├── layouts/      # Plantillas base (Layout.astro)
+│   ├── pages/        # Párutas del sitio (index.astro)
+│   └── styles/       # Estilos globales de CSS/Tailwind
+├── astro.config.mjs  # Configuración de Astro
+├── package.json      # Dependencias del proyecto
+└── tsconfig.json     # Configuración de TypeScript
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 💻 Desarrollo Local
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Para correr este proyecto en tu máquina local:
 
-Any static assets, like images, can be placed in the `` directory.
+1. Clona el repositorio:
+   ```sh
+   git clone https://github.com/luminate123/portfolio-v2.0.git
+   ```
 
-## 🧞 Commands
+2. Instala las dependencias:
+   ```sh
+   npm install
+   ```
 
-All commands are run from the root of the project, from a terminal:
+3. Inicia el servidor de desarrollo local:
+   ```sh
+   npm run dev
+   ```
 
-| Command                   | Action                                           |
+4. Abre tu navegador y dirígete a `http://localhost:4321/`
+
+## 🛠 Comandos Disponibles
+
+| Comando                   | Acción                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm install`             | Instala todas las dependencias                   |
+| `npm run dev`             | Inicia el servidor local de desarrollo           |
+| `npm run build`           | Compila el sitio para producción                 |
+| `npm run preview`         | Previsualiza la compilación localmente           |
 
-## 👀 Want to learn more?
+## 🎨 Proyectos Destacados (Componente Projects)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+La sección de proyectos contiene un carrusel dinámico de imágenes, modales flotantes (lightbox) e información de los proyectos que he construido o participado, como:
+
+- Corporativos (KML Tech Solutions)
+- E-commerce con integraciones Shopify + Nest.js (Shop Test)
+- Back-end / APIs Robustas en Java (API de Detección de Fraude)
+- Landing pages para el sector médico (Cliniderma, Website Doctor)
